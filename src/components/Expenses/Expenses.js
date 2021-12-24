@@ -4,6 +4,7 @@ import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../UI/Card";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
+import ExpenseChart from "./ExpensesChart";
 
 function Expenses(props) {
   const [filteredyear, setYear] = useState(new Date().getFullYear().toString());
@@ -20,6 +21,7 @@ function Expenses(props) {
         selected={filteredyear}
         onFilterData={filterChangeHandler}
       />
+      <ExpenseChart expenses={filteredExpenses} />
 
       {filteredExpenses.length === 0 ? (
         <p className="expenses-list__fallback">

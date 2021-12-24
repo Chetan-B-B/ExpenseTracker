@@ -22,7 +22,7 @@ const ExpenseForm = (props) => {
     e.preventDefault();
     const expenseData = {
       title: title.charAt(0).toUpperCase() + title.slice(1),
-      amount: amount,
+      amount: +amount,
       date: new Date(date),
     };
     //console.log(expenseData);
@@ -33,7 +33,7 @@ const ExpenseForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form className={props.hideForm} onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -61,6 +61,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Close
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
